@@ -1,5 +1,7 @@
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:listify/models/shopping_item_model.dart';
 import 'package:listify/models/shopping_plan_model.dart';
 import 'package:listify/provider/shopping_item_provider.dart';
@@ -98,6 +100,13 @@ class _AddShoppingItemDialogState extends State<AddShoppingItemDialog> {
                     child: TextFormField(
                       controller: qtyController,
                       maxLines: 1,
+                      inputFormatters: <TextInputFormatter>[
+                        CurrencyTextInputFormatter(
+                          locale: 'id',
+                          decimalDigits: 0,
+                          symbol: '',
+                        )
+                      ],
                       validator: (qty) {
                         if (qty!.isEmpty) {
                           return 'The quantity cannot be empty';
@@ -163,6 +172,10 @@ class _AddShoppingItemDialogState extends State<AddShoppingItemDialog> {
               TextFormField(
                 controller: priceController,
                 maxLines: 1,
+                inputFormatters: <TextInputFormatter>[
+                  CurrencyTextInputFormatter(
+                      locale: 'id', decimalDigits: 0, symbol: 'IDR '),
+                ],
                 validator: (price) {
                   if (price!.isEmpty) {
                     return 'The price cannot be empty';

@@ -7,17 +7,11 @@ class ShoppingItemProvider with ChangeNotifier {
   /// add shopping item
   Future<void> addShoppingItem(ShoppingItemModel item) async {
     await FirebaseService.createShoppingItem(item);
-
-    // _itemList.add(item);
-    // notifyListeners();
   }
 
   /// remove shopping item
   Future<void> removeShoppingItem(ShoppingItemModel item, String id) async {
     await FirebaseService.deleteShoppingItem(item, id);
-
-    // _itemList.remove(item);
-    // notifyListeners();
   }
 
   /// update shopping item

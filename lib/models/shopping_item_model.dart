@@ -40,8 +40,4 @@ class ShoppingItemModel {
         'price': price,
         'is_done': isDone,
       };
-
-  static DateTime toDateTime(Timestamp time) {
-    return time.toDate();
-  }
 }
